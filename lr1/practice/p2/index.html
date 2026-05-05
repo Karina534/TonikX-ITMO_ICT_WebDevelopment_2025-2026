@@ -1,0 +1,1600 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../p1/">
+      
+      
+        <link rel="next" href="../p3/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Практика 2 - BookSharingWeb — отчёт</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#12-sqlmodel-alembic" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../../.." title="BookSharingWeb — отчёт" class="md-header__button md-logo" aria-label="BookSharingWeb — отчёт" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BookSharingWeb — отчёт
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Практика 2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="BookSharingWeb — отчёт" class="md-nav__button md-logo" aria-label="BookSharingWeb — отчёт" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BookSharingWeb — отчёт
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛР1
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ЛР1
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Задание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практика
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практика
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практика 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практика 2
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практика 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Установка зависимостей
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Подключение к базе
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Создание моделей
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Обновление эндпоинтов и создание новых
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практика 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Дополнительное задание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛР2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ЛР2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lr2/report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Отчёт
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛР3
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ЛР3
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lr3/report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Отчёт
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Установка зависимостей
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Подключение к базе
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Создание моделей
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Обновление эндпоинтов и создание новых
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="12-sqlmodel-alembic">Практика 1.2. Настройка БД, SQLModel и миграции через Alembic</h1>
+<h2 id="1">1. Установка зависимостей</h2>
+<p>Для того чтобы реализовывать взаимодействие с БД не чистыми SQL-запросами при разработке приложений обычно используют ORM.
+Для этого в FastApi используется SQLModel, которая была установлена командой: <code>pip install sqlmodel</code> и драйвер
+для работы с PostgreSQL <code>pip install psycopg2-binary</code>.</p>
+<h2 id="2">2. Подключение к базе</h2>
+<p>После установки всех зависимостей был реализован файл с подключением к БД. В подобном файле описывается 
+способ подключения к БД и реализованы дополнительные методы, упрощающие инициализацию и взаимодействие с БД.</p>
+<p><code>connection.py</code></p>
+<pre><code class="language-python">from sqlmodel import SQLModel, Session, create_engine
+import models
+
+db_url = 'postgresql://postgres:SmiSup704@localhost/booksharing'
+engine = create_engine(db_url, echo=True)
+
+def init_db():
+    SQLModel.metadata.create_all(engine)
+
+
+def get_session():
+    with Session(engine) as session:
+        yield session
+</code></pre>
+<h2 id="3">3. Создание моделей</h2>
+<p>Чтобы классы моделей можно было инициализировать в БД, необходимо в параметры класса передать в качестве наследника
+класс SQLModel и в аргументах указать table=true</p>
+<p><code>models.py</code></p>
+<pre><code class="language-python">from datetime import datetime
+from typing import Optional, List
+from sqlmodel import SQLModel, Field, Relationship
+from enum import Enum
+
+class Status(str, Enum):
+    ACTIVE = &quot;ACTIVE&quot;
+    SOLD = &quot;SOLD&quot;
+    BOOKED = &quot;BOOKED&quot;
+
+class Condition(str, Enum):
+    NEW = &quot;NEW&quot;
+    GOOD = &quot;GOOD&quot;
+    SATISFACTORY = &quot;SATISFACTORY&quot;
+    BAD = &quot;BAD&quot;
+
+class DealStatus(str, Enum):
+    ACTIVE = &quot;ACTIVE&quot;
+    FINISHED = &quot;FINISHED&quot;
+
+class Profile(SQLModel, table=True):
+    __tablename__ = &quot;profiles&quot;
+    id: int = Field(default=None, primary_key=True)
+    user_id: int = Field(foreign_key=&quot;users.id&quot;, unique=True, nullable=False, ondelete=&quot;CASCADE&quot;)
+    age: Optional[int] = Field(default=None, ge=7, le=100)
+    address: Optional[str] = Field(default=None, max_length=200)
+    description: Optional[str] = Field(default=None)
+
+
+class User(SQLModel, table=True):
+    __tablename__ = &quot;users&quot;
+    id: int = Field(default=None, primary_key=True)
+    username: str = Field(max_length=30, nullable=False)
+    email: str = Field(unique=True, nullable=False)
+    password: str = Field(nullable=False)
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
+    profile: Optional[Profile] = Relationship(sa_relationship_kwargs={
+            &quot;cascade&quot;: &quot;all, delete-orphan&quot;,
+            &quot;passive_deletes&quot;: True
+        })
+    books: Optional[List[&quot;Book&quot;]] = Relationship(back_populates=&quot;user&quot;, sa_relationship_kwargs={
+            &quot;cascade&quot;: &quot;all, delete-orphan&quot;,
+            &quot;passive_deletes&quot;: True
+        })
+    chats: Optional[List[&quot;UserChat&quot;]] = Relationship(back_populates=&quot;user&quot;, sa_relationship_kwargs={
+            &quot;cascade&quot;: &quot;all, delete-orphan&quot;,
+            &quot;passive_deletes&quot;: True
+        })
+    messages: Optional[List[&quot;Message&quot;]] = Relationship(back_populates=&quot;sender&quot;, sa_relationship_kwargs={
+            &quot;cascade&quot;: &quot;all, delete-orphan&quot;,
+            &quot;passive_deletes&quot;: True
+        })
+
+class Book(SQLModel, table=True):
+    __tablename__ = &quot;books&quot;
+    id: int = Field(default=None, primary_key=True)
+    user_id: int = Field(foreign_key=&quot;users.id&quot;, nullable=False, ondelete=&quot;CASCADE&quot;)
+    title: str = Field(max_length=200, nullable=False)
+    author: str = Field(max_length=100, nullable=False)
+    photo: Optional[str] = Field(default=None)
+    description: Optional[str] = Field(default=None, max_length=5000)
+    genre: Optional[str] = Field(default=None, max_length=50)
+    language: Optional[str] = Field(default=None, max_length=30)
+    status: Status = Field(nullable=False)
+    condition: Condition = Field(nullable=False)
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
+    user: User = Relationship(back_populates=&quot;books&quot;)
+
+class Deal(SQLModel, table=True):
+    __tablename__ = &quot;deals&quot;
+    id: int = Field(default=None, primary_key=True)
+    owner_id: Optional[int] = Field(foreign_key=&quot;users.id&quot;, nullable=True, ondelete=&quot;SET NULL&quot;)
+    request_user_id: Optional[int] = Field(foreign_key=&quot;users.id&quot;, nullable=True, ondelete=&quot;SET NULL&quot;)
+    book_id: Optional[int] = Field(foreign_key=&quot;books.id&quot;, nullable=True, ondelete=&quot;SET NULL&quot;)
+    status: DealStatus = Field(default=DealStatus.ACTIVE)
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    updated_at: Optional[datetime] = Field(default=None)
+
+    owner: Optional[User] = Relationship(sa_relationship_kwargs={&quot;foreign_keys&quot;: &quot;Deal.owner_id&quot;})
+    request_user: Optional[User] = Relationship(sa_relationship_kwargs={&quot;foreign_keys&quot;: &quot;Deal.request_user_id&quot;})
+    book: Optional[Book] = Relationship(sa_relationship_kwargs={&quot;foreign_keys&quot;: &quot;Deal.book_id&quot;})
+
+class UserChat(SQLModel, table=True):
+    __tablename__ = &quot;user_chats&quot;
+    id: int = Field(default=None, primary_key=True)
+    user_id: int = Field(foreign_key=&quot;users.id&quot;, nullable=False, ondelete=&quot;CASCADE&quot;)
+    chat_id: int = Field(foreign_key=&quot;chats.id&quot;, nullable=False, ondelete=&quot;CASCADE&quot;)
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
+    user: User = Relationship(back_populates=&quot;chats&quot;)
+    chat: &quot;Chat&quot; = Relationship(back_populates=&quot;participants&quot;)
+
+class Chat(SQLModel, table=True):
+    __tablename__ = &quot;chats&quot;
+    id: int = Field(default=None, primary_key=True)
+    title: str = Field(max_length=200, nullable=False)
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
+    participants: List[UserChat] = Relationship(back_populates=&quot;chat&quot;, sa_relationship_kwargs={
+            &quot;cascade&quot;: &quot;all, delete-orphan&quot;,
+            &quot;passive_deletes&quot;: True,
+        },)
+    messages: List[&quot;Message&quot;] = Relationship(back_populates=&quot;chat&quot;, sa_relationship_kwargs={
+            &quot;cascade&quot;: &quot;all, delete-orphan&quot;,
+            &quot;passive_deletes&quot;: True
+        })
+
+class Message(SQLModel, table=True):
+    __tablename__ = &quot;messages&quot;
+    id: int = Field(default=None, primary_key=True)
+    chat_id: int = Field(foreign_key=&quot;chats.id&quot;, nullable=False, ondelete=&quot;CASCADE&quot;)
+    sender_id: int = Field(foreign_key=&quot;users.id&quot;, nullable=True, ondelete=&quot;SET NULL&quot;)
+    content: str = Field(max_length=5000, nullable=False)
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
+    chat: Chat = Relationship(back_populates=&quot;messages&quot;)
+    sender: User = Relationship(back_populates=&quot;messages&quot;)
+</code></pre>
+<p>Чтобы описанные таблицы были созданы в main.py был добавлен метод lifespan:</p>
+<pre><code class="language-python">@asynccontextmanager
+async def lifespan(app: FastAPI):
+    init_db()
+    print(&quot;Database initialized&quot;)
+    yield
+
+app = FastAPI(lifespan=lifespan)
+</code></pre>
+<h2 id="4">4. Обновление эндпоинтов и создание новых</h2>
+<p>После реализации таблиц необходимо обновить все ранее созданные эндпоинты и создать все необходимые для полноценной 
+работы API.</p>
+<pre><code class="language-python"># Работа с Deal
+@app.get(&quot;/deal_list&quot;)
+def deal_list(session=Depends(get_session)) -&gt; List[DealResponse]:
+    stmt = select(Deal).options(selectinload(Deal.book))
+    return session.exec(stmt).all()
+
+@app.get(&quot;/deal/{deal_id}&quot;, response_model=DealDetailResponse)
+def deal_by_id(deal_id: int, session=Depends(get_session)) -&gt; DealDetailResponse:
+    stmt = (
+        select(Deal)
+        .where(Deal.id == deal_id)
+        .options(
+            selectinload(Deal.owner),
+            selectinload(Deal.request_user),
+            selectinload(Deal.book),
+        )
+    )
+    deal = session.exec(stmt).first()
+    if not deal:
+        raise HTTPException(status_code=404, detail=&quot;Deal not found&quot;)
+    return deal
+
+@app.post(&quot;/deal&quot;)
+def create_deal(deal: DealCreate, session=Depends(get_session)) -&gt; TypedDict('Response', {&quot;status&quot;: int, &quot;data&quot;: DealResponse}):
+    user_owner = session.get(User, deal.owner_id)
+    if not user_owner:
+        raise HTTPException(status_code=404, detail=&quot;User owner not exist&quot;)
+
+    user_request = session.get(User, deal.request_user_id)
+    if not user_request:
+        raise HTTPException(status_code=404, detail=&quot;User request not exist&quot;)
+
+    book = session.get(Book, deal.book_id)
+    if not book:
+        raise HTTPException(status_code=404, detail=&quot;Book not exist&quot;)
+
+    deal_if_exist = session.exec(
+        select(Deal).where(Deal.book_id == deal.book_id)
+    ).first()
+    if deal_if_exist:
+        raise HTTPException(status_code=404, detail=&quot;Deal for this book already exist&quot;)
+
+    db_deal = Deal(**deal.model_dump())
+    session.add(db_deal)
+    session.commit()
+    session.refresh(db_deal)
+    return {&quot;status&quot;: 200, &quot;data&quot;: DealResponse.model_validate(db_deal)}
+
+@app.delete(&quot;/deal/{deal_id}&quot;)
+def delete_deal(deal_id: int, session=Depends(get_session)) -&gt; dict:
+    db_deal = session.get(Deal, deal_id)
+    if not db_deal:
+        raise HTTPException(status_code=404, detail=&quot;Deal not found&quot;)
+    session.delete(db_deal)
+    session.commit()
+    return {&quot;status&quot;: 201, &quot;message&quot;: &quot;delete&quot;}
+
+@app.patch(&quot;/deal/{deal_id}&quot;)
+def update_deal(deal_id: int, deal: DealUpdate, session=Depends(get_session)) -&gt; DealResponse:
+    db_deal = session.get(Deal, deal_id)
+    if not db_deal:
+        raise HTTPException(status_code=404, detail=&quot;Deal not found&quot;)
+    deal_data = deal.model_dump(exclude_unset=True)
+    for key, value in deal_data.items():
+        setattr(db_deal, key, value)
+    session.add(db_deal)
+    session.commit()
+    session.refresh(db_deal)
+    return DealResponse.model_validate(db_deal)
+
+
+# Работа с Book
+@app.get(&quot;/book_list&quot;)
+def book_list(page: int = 1, size: int = 1, session=Depends(get_session)) -&gt; dict:
+    if page &lt; 1:
+        raise HTTPException(status_code=400, detail=&quot;Page must be &gt;= 1&quot;)
+    if size &lt; 1 or size &gt; 100:
+        raise HTTPException(status_code=400, detail=&quot;Size must be between 1 and 100&quot;)
+
+    skip = (page - 1) * size
+    total = session.exec(select(func.count()).select_from(Book)).one()
+    books = session.exec(
+        select(Book).offset(skip).limit(size)
+    ).all()
+
+    return {
+        &quot;items&quot;: books,
+        &quot;total&quot;: total,
+        &quot;page&quot;: page,
+        &quot;size&quot;: size,
+        &quot;pages&quot;: (total + size - 1)
+    }
+
+@app.get(&quot;/book/{book_id}&quot;)
+def book_by_id(book_id: int, session=Depends(get_session)) -&gt; BookDetailResponse:
+    book = session.get(Book, book_id)
+    if not book:
+        raise HTTPException(status_code=404, detail=&quot;Book not found&quot;)
+    return book
+
+@app.post(&quot;/book&quot;)
+def create_book(book: BookCreate, session=Depends(get_session)) -&gt; TypedDict('Response', {&quot;status&quot;: int, &quot;data&quot;: BookResponse}):
+    user = session.get(User, book.user_id)
+    if not user:
+        raise HTTPException(status_code=404, detail=&quot;User not exist&quot;)
+    data = book.model_dump(mode=&quot;json&quot;)
+    db_book = Book(**data)
+    session.add(db_book)
+    session.commit()
+    session.refresh(db_book)
+    return {&quot;status&quot;: 200, &quot;data&quot;: BookResponse.model_validate(db_book)}
+
+@app.delete(&quot;/book/{book_id}&quot;)
+def delete_book(book_id: int, session=Depends(get_session)):
+    book = session.get(Book, book_id)
+    if not book:
+        raise HTTPException(status_code=404, detail=&quot;Book not found&quot;)
+    session.delete(book)
+    session.commit()
+    return {&quot;status&quot;: 201, &quot;message&quot;: &quot;delete&quot;}
+
+@app.patch(&quot;/book/{book_id}&quot;)
+def update_book(book_id: int, book: BookUpdate, session=Depends(get_session)) -&gt; BookResponse:
+    db_book = session.get(Book, book_id)
+    if not db_book:
+        raise HTTPException(status_code=404, detail=&quot;Book not found&quot;)
+    book_data = book.model_dump(mode=&quot;json&quot;, exclude_unset=True)
+    for key, value in book_data.items():
+        setattr(db_book, key, value)
+    session.add(db_book)
+    session.commit()
+    session.refresh(db_book)
+    return db_book
+
+
+# Работа с Profile
+@app.get(&quot;/profile_list&quot;)
+def profile_list(session=Depends(get_session)) -&gt; List[ProfileResponse]:
+    return session.exec(select(Profile)).all()
+
+@app.get(&quot;/profile/{profile_id}&quot;)
+def get_profile(profile_id: int, session=Depends(get_session)) -&gt; ProfileResponse:
+    db_profile = session.get(Profile, profile_id)
+    if not db_profile:
+        raise HTTPException(status_code=404, detail=&quot;Profile not found&quot;)
+    return db_profile
+
+@app.post(&quot;/profile&quot;)
+def create_profile(profile: ProfileCreate, session=Depends(get_session)) -&gt; TypedDict('Response', {&quot;status&quot;: int, &quot;data&quot;: ProfileResponse}):
+    # Проверяем, что пользователь существует
+    user = session.get(User, profile.user_id)
+    if not user:
+        raise HTTPException(status_code=404, detail=&quot;User not found&quot;)
+
+    db_profile = Profile(**profile.model_dump())
+    session.add(db_profile)
+    session.commit()
+    session.refresh(db_profile)
+    return {&quot;status&quot;: 200, &quot;data&quot;: ProfileResponse.model_validate(db_profile)}
+
+@app.delete(&quot;/profile/{profile_id}&quot;)
+def delete_profile(profile_id: int, session=Depends(get_session)):
+    profile = session.get(Profile, profile_id)
+    if not profile:
+        raise HTTPException(status_code=404, detail=&quot;Profile not found&quot;)
+    session.delete(profile)
+    session.commit()
+    return {&quot;status&quot;: 201, &quot;message&quot;: &quot;delete&quot;}
+
+@app.patch(&quot;/profile/{profile_id}&quot;)
+def update_profile(profile_id: int, profile: ProfileBase, session=Depends(get_session)) -&gt; ProfileResponse:
+    db_profile = session.get(Profile, profile_id)
+    if not db_profile:
+        raise HTTPException(status_code=404, detail=&quot;Profile not found&quot;)
+    profile_data = profile.model_dump(exclude_unset=True)
+    for key, value in profile_data.items():
+        setattr(db_profile, key, value)
+    session.add(db_profile)
+    session.commit()
+    session.refresh(db_profile)
+    return db_profile
+
+# Работа с User
+@app.get(&quot;/user_list&quot;)
+def user_list(session=Depends(get_session)) -&gt; List[UserResponse]:
+    return session.exec(select(User)).all()
+
+@app.get(&quot;/user/{user_id}&quot;)
+def get_user(user_id: int, session=Depends(get_session)) -&gt; UserDetailResponse:
+    stmt = (
+        select(User)
+        .where(User.id == user_id)
+        .options(
+            selectinload(User.profile),
+            selectinload(User.books),
+            selectinload(User.chats).selectinload(UserChat.chat),
+        )
+    )
+    db_user = session.exec(stmt).first()
+    if not db_user:
+        raise HTTPException(status_code=404, detail=&quot;User not found&quot;)
+    return db_user
+
+@app.post(&quot;/user&quot;)
+def create_user(user: UserBase, session=Depends(get_session)) -&gt; TypedDict('Response', {&quot;status&quot;: int, &quot;data&quot;: UserResponse}):
+    # Проверяем уникальность email
+    existing = session.exec(select(User).where(User.email == user.email)).first()
+    if existing:
+        raise HTTPException(status_code=400, detail=&quot;Email already registered&quot;)
+
+    db_user = User(**user.model_dump())
+    session.add(db_user)
+    session.commit()
+    session.refresh(db_user)
+    return {&quot;status&quot;: 200, &quot;data&quot;: UserResponse.model_validate(db_user)}
+
+@app.delete(&quot;/user/{user_id}&quot;)
+def delete_user(user_id: int, session=Depends(get_session)):
+    user = session.get(User, user_id)
+    if not user:
+        raise HTTPException(status_code=404, detail=&quot;Profile not found&quot;)
+    session.delete(user)
+    session.commit()
+    return {&quot;status&quot;: 201, &quot;message&quot;: &quot;delete&quot;}
+
+@app.patch(&quot;/user/{user_id}&quot;)
+def update_user(user_id: int, user: UserUpdate, session=Depends(get_session)) -&gt; UserResponse:
+    db_user = session.get(User, user_id)
+    if not db_user:
+        raise HTTPException(status_code=404, detail=&quot;Profile not found&quot;)
+    user_data = user.model_dump(exclude_unset=True)
+
+    if &quot;email&quot; in user_data and user_data[&quot;email&quot;] != db_user.email:
+        existing = session.exec(select(User).where(User.email == user_data[&quot;email&quot;])).first()
+        if existing:
+            raise HTTPException(status_code=400, detail=&quot;Email already registered&quot;)
+
+    for key, value in user_data.items():
+        setattr(db_user, key, value)
+    session.add(db_user)
+    session.commit()
+    session.refresh(db_user)
+    return db_user
+
+# Работа с Chat
+@app.get(&quot;/chat_list&quot;)
+def chat_list(session=Depends(get_session)) -&gt; List[ChatResponse]:
+    return session.exec(select(Chat)).all()
+
+@app.get(&quot;/chat/{chat_id}&quot;)
+def chat_by_id(chat_id: int, session=Depends(get_session)) -&gt; ChatResponse:
+    chat = session.get(Chat, chat_id)
+    if not chat:
+        raise HTTPException(status_code=404, detail=&quot;Chat not found&quot;)
+    chat.messages.sort(key=lambda m: m.created_at)
+    return chat
+
+@app.post(&quot;/chat&quot;)
+def create_chat(chat: ChatCreate, session=Depends(get_session)) -&gt; TypedDict('Response',
+                                                                             {&quot;status&quot;: int, &quot;data&quot;: ChatResponse}):
+    participant_ids = list(set(chat.participant_ids))
+    if len(participant_ids) != 2:
+        raise HTTPException(status_code=400, detail=&quot;Chat can be created for two different users&quot;)
+
+    u1, u2 = participant_ids
+
+    # Ищем общий чат
+    existing_chat_id = session.exec(
+        select(UserChat.chat_id)
+        .where(UserChat.user_id.in_([u1, u2]))
+        .group_by(UserChat.chat_id)
+        .having(func.count(func.distinct(UserChat.user_id)) == 2)
+    ).first()
+
+    if existing_chat_id:
+        raise HTTPException(status_code=400, detail=f&quot;Chat already exists for these participants&quot;)
+
+    # Создаем чат
+    db_chat = Chat(title=chat.title)
+    session.add(db_chat)
+    session.commit()
+    session.refresh(db_chat)
+
+    # Добавляем участников
+    for user_id in chat.participant_ids:
+        user_chat = UserChat(
+            user_id=user_id,
+            chat_id=db_chat.id
+        )
+        session.add(user_chat)
+
+    session.commit()
+    session.refresh(db_chat)
+
+    return {&quot;status&quot;: 200, &quot;data&quot;: ChatResponse.model_validate(db_chat)}
+
+
+@app.delete(&quot;/chat/{chat_id}&quot;)
+def delete_chat(chat_id: int, session=Depends(get_session)) -&gt; dict:
+    db_chat = session.get(Chat, chat_id)
+    if not db_chat:
+        raise HTTPException(status_code=404, detail=&quot;Chat not found&quot;)
+
+    session.delete(db_chat)
+    session.commit()
+    return {&quot;status&quot;: 201, &quot;message&quot;: &quot;delete&quot;}
+
+
+@app.patch(&quot;/chat/{chat_id}&quot;)
+def update_chat(chat_id: int, chat: ChatBase, session=Depends(get_session)) -&gt; ChatResponse:
+    db_chat = session.get(Chat, chat_id)
+    if not db_chat:
+        raise HTTPException(status_code=404, detail=&quot;Chat not found&quot;)
+
+    chat_data = chat.model_dump(exclude_unset=True)
+    for key, value in chat_data.items():
+        setattr(db_chat, key, value)
+
+    session.add(db_chat)
+    session.commit()
+    session.refresh(db_chat)
+    return ChatResponse.model_validate(db_chat)
+
+# Работа с Message
+@app.get(&quot;/chat/{chat_id}/messages&quot;)
+def message_list(chat_id: int, session=Depends(get_session)) -&gt; List[MessageResponse]:
+    messages = session.exec(
+        select(Message)
+        .where(Message.chat_id == chat_id)
+        .order_by(Message.created_at)
+        .options(selectinload(Message.sender))
+    ).all()
+    return messages
+
+
+@app.get(&quot;/message/{message_id}&quot;)
+def message_by_id(message_id: int, session=Depends(get_session)) -&gt; MessageResponse:
+    message = session.get(Message, message_id)
+    if not message:
+        raise HTTPException(status_code=404, detail=&quot;Message not found&quot;)
+    return message
+
+
+@app.post(&quot;/message&quot;)
+def create_message(message: MessageCreate, session=Depends(get_session)) -&gt; TypedDict('Response', {&quot;status&quot;: int,
+                                                                                                   &quot;data&quot;: MessageResponse}):
+    # Проверяем существование чата
+    chat = session.get(Chat, message.chat_id)
+    if not chat:
+        raise HTTPException(status_code=404, detail=&quot;Chat not found&quot;)
+
+    # Проверяем, является ли отправитель участником чата
+    participant = session.exec(
+        select(UserChat).where(
+            UserChat.chat_id == message.chat_id,
+            UserChat.user_id == message.sender_id
+        )
+    ).first()
+
+    if not participant:
+        raise HTTPException(status_code=403, detail=&quot;User is not a participant of this chat&quot;)
+
+    db_message = Message(**message.model_dump())
+    session.add(db_message)
+    session.commit()
+    session.refresh(db_message)
+    return {&quot;status&quot;: 200, &quot;data&quot;: MessageResponse.model_validate(db_message)}
+
+
+@app.delete(&quot;/message/{message_id}&quot;)
+def delete_message(message_id: int, session=Depends(get_session)) -&gt; dict:
+    db_message = session.get(Message, message_id)
+    if not db_message:
+        raise HTTPException(status_code=404, detail=&quot;Message not found&quot;)
+
+    session.delete(db_message)
+    session.commit()
+    return {&quot;status&quot;: 201, &quot;message&quot;: &quot;delete&quot;}
+
+
+@app.patch(&quot;/message/{message_id}&quot;)
+def update_message(message_id: int, message: MessageBase, session=Depends(get_session)) -&gt; MessageResponse:
+    db_message = session.get(Message, message_id)
+    if not db_message:
+        raise HTTPException(status_code=404, detail=&quot;Message not found&quot;)
+
+    message_data = message.model_dump(exclude_unset=True)
+    for key, value in message_data.items():
+        setattr(db_message, key, value)
+
+    session.add(db_message)
+    session.commit()
+    session.refresh(db_message)
+    return MessageResponse.model_validate(db_message)
+
+
+# Дополнительные эндпоинты
+@app.get(&quot;/user/{user_id}/chats&quot;)
+def user_chats(user_id: int, session=Depends(get_session)) -&gt; List[ChatResponse]:
+    user_chats = session.exec(
+        select(Chat)
+        .join(UserChat)
+        .where(UserChat.user_id == user_id)
+    ).all()
+    return user_chats
+
+@app.get(&quot;/user/{user_id}/deals&quot;)
+def user_deals(user_id: int, session=Depends(get_session)) -&gt; List[DealDetailResponse]:
+    user = session.get(User, user_id)
+    if not user:
+        raise HTTPException(status_code=404, detail=&quot;User not found&quot;)
+
+    stmt = (
+        select(Deal)
+        .where((Deal.owner_id == user_id) | (Deal.request_user_id == user_id))
+        .order_by(Deal.created_at.desc())
+        .options(
+            selectinload(Deal.book),
+            selectinload(Deal.owner),
+            selectinload(Deal.request_user),
+        )
+    )
+    return session.exec(stmt).all()
+
+if __name__==&quot;__main__&quot;:
+    uvicorn.run(&quot;main:app&quot;, reload=True)
+</code></pre>
+<p>Для удобства были созданы схемы pydantic для ответов и запросов:</p>
+<pre><code class="language-python">from pydantic import BaseModel, Field, HttpUrl, ConfigDict, EmailStr
+from datetime import datetime
+from typing import Optional, List
+from models import Status, Condition, DealStatus
+
+class UserBase(BaseModel):
+    username: str = Field(min_length=3, max_length=30)
+    email: EmailStr
+    password: str = Field(min_length=8, max_length=100)
+
+class UserUpdate(BaseModel):
+    username: str = Field(min_length=3, max_length=30)
+    email: EmailStr
+class UserResponse(UserUpdate):
+    id: int
+    created_at: datetime
+
+    model_config = ConfigDict(from_attributes=True)
+
+class UserShortResponse(BaseModel):
+    id: int
+    username: str
+    email: EmailStr
+
+    model_config = ConfigDict(from_attributes=True)
+
+class UserDetailResponse(UserUpdate):
+    profile: Optional[&quot;ProfileResponse&quot;] = None
+    books: List[&quot;BookResponse&quot;] = []
+    chats: List[&quot;UserChatResponse&quot;] = []
+
+class BookBase(BaseModel):
+    title: str = Field(min_length=1, max_length=200)
+    author: str = Field(min_length=1, max_length=100)
+    photo: Optional[HttpUrl] = None
+    description: Optional[str] = Field(None, max_length=5000)
+    genre: Optional[str] = Field(None, max_length=50)
+    language: Optional[str] = Field(None, max_length=30)
+    status: Status
+    condition: Condition
+
+
+class BookCreate(BookBase):
+    user_id: int = Field(gt=0)
+
+class BookUpdate(BaseModel):
+    title: Optional[str] = Field(None, min_length=1, max_length=200)
+    author: Optional[str] = Field(None, min_length=1, max_length=100)
+    photo: Optional[HttpUrl] = None
+    description: Optional[str] = Field(None, max_length=5000)
+    genre: Optional[str] = Field(None, max_length=50)
+    language: Optional[str] = Field(None, max_length=30)
+    status: Optional[Status] = None
+    condition: Optional[Condition] = None
+
+class BookResponse(BookBase):
+    id: int
+    user_id: int
+    created_at: datetime
+
+    model_config = ConfigDict(from_attributes=True)
+
+class BookShortResponse(BaseModel):
+    id: int
+    title: str
+    author: str
+    photo: Optional[str] = None
+
+    model_config = ConfigDict(from_attributes=True)
+
+class BookDetailResponse(BookBase):
+    user: UserShortResponse
+    model_config = ConfigDict(from_attributes=True)
+
+class ProfileBase(BaseModel):
+    age: Optional[int] = Field(None, ge=7, le=100)
+    address: Optional[str] = Field(None, max_length=200)
+    description: Optional[str] = None
+
+class ProfileCreate(ProfileBase):
+    user_id: int = Field(gt=0)
+
+class ProfileResponse(ProfileBase):
+    id: int
+    user_id: int
+
+    model_config = ConfigDict(from_attributes=True)
+
+
+class DealBase(BaseModel):
+    status: DealStatus = DealStatus.ACTIVE
+
+class DealCreate(DealBase):
+    owner_id: int = Field(gt=0)
+    request_user_id: int = Field(gt=0)
+    book_id: int = Field(gt=0)
+
+class DealUpdate(BaseModel):
+    status: Optional[DealStatus] = None
+
+class DealResponse(DealBase):
+    id: int
+    owner_id: int
+    request_user_id: int
+    book_id: int
+    book: Optional[BookShortResponse] = None
+    created_at: datetime
+    updated_at: Optional[datetime] = None
+
+    model_config = ConfigDict(from_attributes=True)
+
+class DealDetailResponse(BaseModel):
+    id: int
+    status: str
+    created_at: datetime
+    updated_at: Optional[datetime] = None
+    owner: UserShortResponse
+    request_user: UserShortResponse
+    book: BookShortResponse
+
+    model_config = ConfigDict(from_attributes=True)
+
+class ChatBase(BaseModel):
+    title: str = Field(min_length=1, max_length=200)
+
+class ChatCreate(ChatBase):
+    participant_ids: list[int] = Field(min_length=2)
+
+class ChatResponse(ChatBase):
+    id: int
+    created_at: datetime
+
+    model_config = ConfigDict(from_attributes=True)
+
+class ChatShortResponse(BaseModel):
+    id: int
+    title: str
+    created_at: datetime
+    model_config = ConfigDict(from_attributes=True)
+
+class UserChatResponse(BaseModel):
+    id: int
+    chat: ChatShortResponse
+    created_at: datetime
+    model_config = ConfigDict(from_attributes=True)
+
+class MessageBase(BaseModel):
+    content: str = Field(min_length=1, max_length=5000)
+
+class MessageCreate(MessageBase):
+    chat_id: int = Field(..., gt=0)
+    sender_id: int = Field(..., gt=0)
+
+class MessageResponse(MessageBase):
+    id: int
+    chat_id: int
+    sender_id: Optional[int] = None
+    sender: Optional[UserShortResponse] = None
+    created_at: datetime
+
+    model_config = ConfigDict(from_attributes=True)
+
+class ChatWithMessagesResponse(BaseModel):
+    id: int
+    title: str
+    created_at: datetime
+    messages: List[MessageResponse] = []
+
+    model_config = ConfigDict(from_attributes=True)
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

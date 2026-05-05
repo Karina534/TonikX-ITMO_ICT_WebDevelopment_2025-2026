@@ -1,0 +1,1612 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../lr2/report/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Отчёт - BookSharingWeb — отчёт</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3-fastapi-docker" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../.." title="BookSharingWeb — отчёт" class="md-header__button md-logo" aria-label="BookSharingWeb — отчёт" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BookSharingWeb — отчёт
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Отчёт
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BookSharingWeb — отчёт" class="md-nav__button md-logo" aria-label="BookSharingWeb — отчёт" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BookSharingWeb — отчёт
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛР1
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ЛР1
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lr1/report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Задание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практика
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практика
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lr1/practice/p1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практика 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lr1/practice/p2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практика 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lr1/practice/p3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практика 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lr1/practice/dop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Дополнительное задание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛР2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ЛР2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lr2/report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Отчёт
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛР3
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ЛР3
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Отчёт
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Отчёт
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цель работы:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-fastapi-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Подзадача 1: Упаковка FastAPI приложения, базы данных и парсера данных в Docker
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Подзадача 1: Упаковка FastAPI приложения, базы данных и парсера данных в Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Выполнение
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Выполнение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Написание приложения для парсера
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Выводы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Подзадача 2: Вызов парсера из FastAPI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Подзадача 2: Вызов парсера из FastAPI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Выполнение
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Выводы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Подзадача 3: Вызов парсера из FastAPI через очередь
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Подзадача 3: Вызов парсера из FastAPI через очередь">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Выводы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цель работы:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-fastapi-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Подзадача 1: Упаковка FastAPI приложения, базы данных и парсера данных в Docker
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Подзадача 1: Упаковка FastAPI приложения, базы данных и парсера данных в Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Выполнение
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Выполнение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Написание приложения для парсера
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Выводы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Подзадача 2: Вызов парсера из FastAPI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Подзадача 2: Вызов парсера из FastAPI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Выполнение
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Выводы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Подзадача 3: Вызов парсера из FastAPI через очередь
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Подзадача 3: Вызов парсера из FastAPI через очередь">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Выводы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="3-fastapi-docker">Лабораторная работа 3. Упаковка FastAPI приложения в Docker, Работа с источниками данных и Очереди</h1>
+<h2 id="_1">Цель работы:</h2>
+<p>Научиться упаковывать FastAPI приложение в Docker, интегрировать парсер данных с базой данных и вызывать парсер через 
+API и очередь.</p>
+<h2 id="1-fastapi-docker">Подзадача 1: Упаковка FastAPI приложения, базы данных и парсера данных в Docker</h2>
+<ol>
+<li>Создание FastAPI приложения: Создано в рамках лабораторной работы номер 1</li>
+<li>Создание базы данных: Создано в рамках лабораторной работы номер 1</li>
+<li>Создание парсера данных: Создано в рамках лабораторной работы номер 2</li>
+<li>
+<p>Реулизуйте возможность вызова парсера по http Для этого можно сделать отдельное приложение FastAPI для парсера или 
+воспользоваться библиотекой socket или подобными.</p>
+</li>
+<li>
+<p>Разработка Dockerfile:</p>
+</li>
+<li>
+<p>Необходимо создать Dockerfile для упаковки FastAPI приложения и приложения с паресером. В Dockerfile указать базовый 
+образ, установить необходимые зависимости, скопировать исходные файлы в контейнер и определить команду для запуска 
+приложения.</p>
+</li>
+<li>
+<p>Зачем: Docker позволяет упаковать приложение и все его зависимости в единый контейнер, что обеспечивает консистентность 
+среды выполнения и упрощает развертывание.</p>
+</li>
+<li>
+<p>Создание Docker Compose файла:</p>
+</li>
+<li>
+<p>Необходимо написать docker-compose.yml для управления оркестром сервисов, включающих FastAPI приложение, базу данных 
+и парсер данных. Определите сервисы, укажите порты и зависимости между сервисами.</p>
+</li>
+<li>Зачем: Docker Compose упрощает управление несколькими контейнерами, позволяя вам запускать и настраивать все сервисы 
+вашего приложения с помощью одного файла конфигурации.</li>
+</ol>
+<h3 id="_2">Выполнение</h3>
+<h4 id="_3">Написание приложения для парсера</h4>
+<p>Внутри папки создаем файл <code>parser_service.py</code> в котором создаем приложение fastAPI. В нем создаем эндпоинт POST <code>/parse</code> 
+который будет принимать JSON (ParseRequest) тело с полями 
+- <code>user_id</code> пользователь, для которого сохранять результаты парсинга в базу данных,
+- <code>ids</code> список ID книг для парсинга,
+- <code>concurrency</code> максимальное количество одновременных запросов к сайту.</p>
+<p>Метод parse_endpoint():
+- удаляет дубликаты ID,
+- создает asyncio.Semaphore(concurrency) для ограничения параллельности,
+- создает по одной asyncio задаче на каждый ID и запускает их вместе с помощью asyncio.gather().
+- каждая задача вызывает parse_one(id, http, sem):
+  - строит URL https://www.gutenberg.org/ebooks/{id},
+  - скачивает страницу с помощью aiohttp внутри async with sem:,
+  - парсит HTML с помощью парсера,
+  - сохраняет результаты в базу данных (ParsedPage + Book с user_id=1, Status.ACTIVE, Condition.NEW).</p>
+<p>После завершения всех задач parse_endpoint() возвращает JSON ответ с общей статистикой: общее количество, количество 
+успешных, затраченное время и статус по каждому ID.</p>
+<details>
+<summary>Код `parser_service.py`</summary>
+
+
+<pre><code class="language-python">from typing import List, Optional
+import asyncio
+import time
+
+import aiohttp
+from fastapi import FastAPI
+from pydantic import BaseModel, Field
+
+from connection import init_db, get_session
+from models import Book, ParsedPage, Status, Condition
+from lab2.ex2.parser import parse as parse_html
+
+app = FastAPI(title=&quot;Parser Service&quot;)
+
+class ParseRequest(BaseModel):
+    ids: List[int] = Field(..., min_length=1, max_length=200)
+    user_id: int = Field(..., ge=1)
+    concurrency: int = Field(default=8, ge=1, le=50)
+
+class ParseItemResult(BaseModel):
+    id: int
+    url: str
+    ok: bool
+    title: Optional[str] = None
+    author: Optional[str] = None
+    error: Optional[str] = None
+
+def build_url(book_id: int) -&gt; str:
+    return f&quot;https://www.gutenberg.org/ebooks/{book_id}&quot;
+
+def save_to_db(user_id: int, url: str, page_title: str, book_title: str, author: str, summary: str | None):
+    session = next(get_session())
+    try:
+        session.add(ParsedPage(url=url, title=page_title))
+        session.add(Book(
+            user_id=user_id,
+            title=book_title,
+            author=author or &quot;Unknown&quot;,
+            description=summary,
+            status=Status.ACTIVE,
+            condition=Condition.NEW,
+        ))
+        session.commit()
+    finally:
+        session.close()
+
+async def parse_one(user_id: int, book_id: int, http: aiohttp.ClientSession, sem: asyncio.Semaphore) -&gt; ParseItemResult:
+    url = build_url(book_id)
+    try:
+        async with sem:
+            async with http.get(
+                url,
+                timeout=aiohttp.ClientTimeout(total=20),
+                headers={&quot;User-Agent&quot;: &quot;Mozilla/5.0 (student parser)&quot;},
+            ) as resp:
+                resp.raise_for_status()
+                html = await resp.text()
+
+        data = parse_html(html)
+
+        title = (data.get(&quot;title&quot;) or &quot;&quot;).strip() or &quot;(no title)&quot;
+        author = (data.get(&quot;author&quot;) or &quot;&quot;).strip() or &quot;Unknown&quot;
+        page_title = (data.get(&quot;page_title&quot;) or &quot;&quot;).strip() or title
+        desc = data.get(&quot;description&quot;)
+
+        save_to_db(user_id, url, page_title, title, author, desc)
+        return ParseItemResult(id=book_id, url=url, ok=True, title=title, author=author)
+
+    except Exception as e:
+        return ParseItemResult(id=book_id, url=url, ok=False, error=str(e))
+
+@app.on_event(&quot;startup&quot;)
+def startup():
+    init_db()
+
+@app.post(&quot;/parse&quot;)
+async def parse_endpoint(req: ParseRequest):
+    seen = set()
+    ids_unique: List[int] = []
+    for x in req.ids:
+        if x not in seen:
+            seen.add(x)
+            ids_unique.append(x)
+
+    sem = asyncio.Semaphore(req.concurrency)
+
+    t0 = time.perf_counter()
+    async with aiohttp.ClientSession() as http:
+        results = await asyncio.gather(*(parse_one(req.user_id, i, http, sem) for i in ids_unique))
+    t1 = time.perf_counter()
+
+    return {
+        &quot;requested&quot;: len(req.ids),
+        &quot;unique&quot;: len(ids_unique),
+        &quot;user_id&quot;: req.user_id,
+        &quot;saved_ok&quot;: sum(1 for r in results if r.ok),
+        &quot;time_sec&quot;: round(t1 - t0, 4),
+        &quot;results&quot;: [r.model_dump() for r in results],
+    }
+</code></pre>
+
+
+</details>
+
+<p>Проверка парсинга:</p>
+<p><img alt="Парсинг" src="../../images/postman_test.png" /></p>
+<p>Пишем Dockerfile для парсера:</p>
+<p>Он устанавливает oython, необходимые зависимости для fastAPI приложения, копирует исходные файлы и запускает приложение 
+на порту 8000. Также он открывает порт 8001 для доступа к API парсера.</p>
+<pre><code class="language-Dockerfile">FROM python:3.10-slim
+
+WORKDIR /app
+
+RUN apt-get update &amp;&amp; apt-get install -y --no-install-recommends \
+    build-essential \
+    libpq-dev \
+    &amp;&amp; rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
+
+COPY . /app
+
+EXPOSE 8000
+EXPOSE 8001
+
+CMD [&quot;uvicorn&quot;, &quot;main:app&quot;, &quot;--host&quot;, &quot;0.0.0.0&quot;, &quot;--port&quot;, &quot;8000&quot;]
+</code></pre>
+<p>Пишем docker-compose.yml для всех сервисов:</p>
+<p>Этот файл оркеструет запуск всех сервисов приложения вместе. Сначала он запускает базу данных PostgreSQL,
+затем выполняет миграции для создания таблиц, выполняет файл с добавлением пользователя,
+затем FastAPI приложение и парсер.</p>
+<details>
+<summary>Код `docker-compose.yaml`</summary>
+
+
+<pre><code class="language-yaml">services:
+  db:
+    image: postgres:15
+    container_name: booksharing_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: booksharing
+    healthcheck:
+      test: [ &quot;CMD-SHELL&quot;, &quot;pg_isready -U postgres&quot; ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - &quot;5432:5432&quot;
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  migrate:
+    build: .
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    command: sh -c &quot;alembic upgrade head&quot;
+
+  seed:
+    build: .
+    env_file:
+      - .env
+    depends_on:
+      - migrate
+    command: sh -c &quot;python seed_user.py&quot;
+
+  main_app:
+    build: .
+    container_name: booksharing_main
+    env_file:
+      - .env
+    ports:
+      - &quot;8000:8000&quot;
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    depends_on:
+      - seed
+
+  parser_app:
+    build: .
+    container_name: booksharing_parser
+    env_file:
+      - .env
+    ports:
+      - &quot;8001:8001&quot;
+    command: uvicorn parser_service:app --host 0.0.0.0 --port 8001
+    depends_on:
+      - seed
+
+volumes:
+  pgdata:
+</code></pre>
+
+
+</details>
+
+<p>Пишем файл для вставки пользователя, который будет использоваться по умолчанию для сохранения результатов парсинга в базу данных:</p>
+<p><code>seed_user.py</code></p>
+<pre><code class="language-python">import datetime
+import os
+
+from passlib.context import CryptContext
+from sqlalchemy import create_engine, text
+
+DB_ADMIN = os.getenv(&quot;DB_ADMIN&quot;)
+if not DB_ADMIN:
+    raise RuntimeError(&quot;DB_ADMIN is not set&quot;)
+
+engine = create_engine(DB_ADMIN)
+
+def main():
+    with engine.begin() as conn:
+        pwd_context = CryptContext(schemes=['bcrypt'])
+        conn.execute(
+            text(&quot;&quot;&quot;
+                            INSERT INTO users (id, username, email, password, created_at)
+                            VALUES (:id, :username, :email, :password, NOW())
+                            ON CONFLICT (id) DO NOTHING
+                        &quot;&quot;&quot;),
+            {
+                &quot;id&quot;: 1,
+                &quot;username&quot;: &quot;seed_user&quot;,
+                &quot;email&quot;: &quot;seed_user@example.com&quot;,
+                &quot;password&quot;: &quot;seed_password&quot;
+            },
+        )
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre>
+<h3 id="_4">Выводы</h3>
+<p>В рамках задания был написан Dockerfile для контейнеризации приложения, а также файл docker-compose для оркестрации 
+двух сервисов: основного приложения на порту 8000 и сервиса парсера на порту 8001. Дополнительно создан скрипт 
+seed_user.py для добавления базового пользователя в базу данных. Это позволило развернуть два взаимосвязанных FastAPI 
+приложения с автоматической инициализацией БД одной командой.</p>
+<h2 id="2-fastapi">Подзадача 2: Вызов парсера из FastAPI</h2>
+<p><strong>Эндпоинт в FastAPI для вызова парсера</strong>:
+* Необходимо добавить в FastAPI приложение ендпоинт, который будет принимать запросы с URL для парсинга от клиента, 
+отправлять запрос парсеру (запущенному в отдельном контейнере) и возвращать ответ с результатом клиенту.
+* Зачем: Это позволит интегрировать функциональность парсера в ваше веб-приложение, предоставляя возможность 
+пользователям запускать парсинг через API.</p>
+<h3 id="_5">Выполнение</h3>
+<p>Добавим в <code>.env</code> файл ссылку на API парсера.</p>
+<p>Добавим router endpoint в main app, который будут перенаправлять запрос.</p>
+<details>
+<summary>Код `parser_proxy.py`</summary>
+
+
+<pre><code class="language-python">from typing import List
+import os
+import aiohttp
+from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel, Field
+
+router = APIRouter(prefix=&quot;/parser&quot;, tags=[&quot;parser&quot;])
+
+PARSER_SERVICE_URL = os.getenv(&quot;PARSER_SERVICE_URL&quot;)
+
+class ParseRequest(BaseModel):
+    ids: List[int] = Field(..., min_length=1, max_length=200)
+    user_id: int = Field(..., ge=1)
+    concurrency: int = Field(default=8, ge=1, le=50)
+
+@router.post(&quot;/parse&quot;)
+async def parse_via_parser_service(req: ParseRequest):
+    url = f&quot;{PARSER_SERVICE_URL}/parse&quot;
+
+    try:
+        timeout = aiohttp.ClientTimeout(total=60)
+        async with aiohttp.ClientSession(timeout=timeout) as session:
+            async with session.post(url, json=req.model_dump()) as resp:
+                if resp.status &gt;= 400:
+                    detail_text = await resp.text()
+                    raise HTTPException(
+                        status_code=resp.status,
+                        detail=f&quot;Parser service error: {detail_text}&quot;,
+                    )
+                return await resp.json()
+
+    except aiohttp.ClientError as e:
+        raise HTTPException(status_code=502, detail=f&quot;Cannot reach parser service: {e}&quot;)
+</code></pre>
+
+
+</details>
+
+<p>Проверка результата:</p>
+<p><img alt="Парсинг" src="../../images/postman2.png" /></p>
+<h3 id="_6">Выводы</h3>
+<p>В рамках данной подзадачи был реализован новый endpoint в основном FastAPI приложении, который принимает запросы на 
+парсинг от клиентов, перенаправляет их на API парсера, запущенного в отдельном контейнере, и возвращает результаты 
+обратно клиенту. Это позволило интегрировать функциональность парсера в основное приложение, обеспечив взаимодействие 
+между двумя сервисами через HTTP запросы.</p>
+<h2 id="3-fastapi">Подзадача 3: Вызов парсера из FastAPI через очередь</h2>
+<p><strong>Celery</strong> - это асинхронная очередь задач для Python. Она позволяет выполнять долгие операции в фоне, не блокируя основное приложение.</p>
+<p>Установим зависимости celery и redis в requirements.txt.</p>
+<pre><code class="language-text">celery~=5.5.3
+redis~=6.4.0
+</code></pre>
+<p>Создадим конфигурационный файл celery:</p>
+<pre><code class="language-python">import os
+from celery import Celery
+
+REDIS_URL = os.getenv(&quot;REDIS_URL&quot;, &quot;redis://redis:6379/0&quot;)
+
+celery_app = Celery(
+    &quot;booksharing&quot;,
+    broker=REDIS_URL,
+    backend=REDIS_URL,
+)
+
+celery_app.conf.update(
+    task_serializer=&quot;json&quot;,
+    result_serializer=&quot;json&quot;,
+    accept_content=[&quot;json&quot;],
+    timezone=&quot;UTC&quot;,
+    enable_utc=True,
+)
+</code></pre>
+<p>Заменим предыдущую логику парсинга на celery задачу в файле <code>parser_service.py</code>:</p>
+<details>
+<summary>Код `parser_service.py`</summary>
+
+
+<pre><code class="language-python">import asyncio
+from typing import List
+
+import aiohttp
+
+from celery_app import celery_app
+from connection import init_db, get_session
+from models import Book, ParsedPage, Status, Condition
+from lab2.ex2.parser import parse as parse_html
+
+
+def build_url(book_id: int) -&gt; str:
+    return f&quot;https://www.gutenberg.org/ebooks/{book_id}&quot;
+
+
+def save_to_db(user_id: int, url: str, page_title: str, book_title: str, author: str, summary: str | None):
+    session = next(get_session())
+    try:
+        session.add(ParsedPage(url=url, title=page_title))
+        session.add(Book(
+            user_id=user_id,
+            title=book_title,
+            author=author or &quot;Unknown&quot;,
+            description=summary,
+            status=Status.ACTIVE,
+            condition=Condition.NEW,
+        ))
+        session.commit()
+    finally:
+        session.close()
+
+
+async def _parse_many(ids: List[int], user_id: int, concurrency: int) -&gt; dict:
+    sem = asyncio.Semaphore(concurrency)
+
+    async def parse_one(book_id: int, http: aiohttp.ClientSession):
+        url = build_url(book_id)
+        async with sem:
+            async with http.get(
+                url,
+                timeout=aiohttp.ClientTimeout(total=20),
+                headers={&quot;User-Agent&quot;: &quot;Mozilla/5.0 (student parser)&quot;},
+            ) as resp:
+                resp.raise_for_status()
+                html = await resp.text()
+
+        data = parse_html(html)
+        title = (data.get(&quot;title&quot;) or &quot;&quot;).strip() or &quot;(no title)&quot;
+        author = (data.get(&quot;author&quot;) or &quot;&quot;).strip() or &quot;Unknown&quot;
+        page_title = (data.get(&quot;page_title&quot;) or &quot;&quot;).strip() or title
+        desc = data.get(&quot;description&quot;)
+
+        save_to_db(user_id, url, page_title, title, author, desc)
+        return {&quot;id&quot;: book_id, &quot;url&quot;: url, &quot;ok&quot;: True, &quot;title&quot;: title, &quot;author&quot;: author}
+
+    init_db()
+    async with aiohttp.ClientSession() as http:
+        results = await asyncio.gather(*(parse_one(i, http) for i in ids), return_exceptions=True)
+
+    normalized = []
+    ok = 0
+    for i, r in zip(ids, results):
+        if isinstance(r, Exception):
+            normalized.append({&quot;id&quot;: i, &quot;url&quot;: build_url(i), &quot;ok&quot;: False, &quot;error&quot;: str(r)})
+        else:
+            ok += 1
+            normalized.append(r)
+
+    return {&quot;requested&quot;: len(ids), &quot;saved_ok&quot;: ok, &quot;results&quot;: normalized}
+
+
+@celery_app.task(name=&quot;tasks.parse_books&quot;)
+def parse_books_task(ids: list[int], user_id: int, concurrency: int = 8) -&gt; dict:
+    return asyncio.run(_parse_many(ids=ids, user_id=user_id, concurrency=concurrency))
+</code></pre>
+
+
+</details>
+
+<p>Обновим endpoint в <code>parser_proxy</code> для вызова celery задачи вместо прямого запроса к парсеру:</p>
+<details>
+<summary>Код `parser_proxy.py`</summary>
+
+
+<pre><code class="language-python">from typing import List, Optional
+from fastapi import APIRouter
+from pydantic import BaseModel, Field
+from celery.result import AsyncResult
+
+from celery_app import celery_app
+from parser_service import parse_books_task
+
+router = APIRouter(prefix=&quot;/parser&quot;, tags=[&quot;parser-queue&quot;])
+
+class ParseAsyncRequest(BaseModel):
+    ids: List[int] = Field(..., min_length=1, max_length=200)
+    user_id: int = Field(..., ge=1)
+    concurrency: int = Field(default=8, ge=1, le=50)
+
+@router.post(&quot;/parse-async&quot;)
+def parse_async(req: ParseAsyncRequest):
+    job = parse_books_task.delay(req.ids, req.user_id, req.concurrency)
+    return {&quot;task_id&quot;: job.id, &quot;state&quot;: &quot;queued&quot;}
+
+@router.get(&quot;/task/{task_id}&quot;)
+def task_status(task_id: str):
+    r = AsyncResult(task_id, app=celery_app)
+    # r.state: PENDING / STARTED / SUCCESS / FAILURE
+    resp = {&quot;task_id&quot;: task_id, &quot;state&quot;: r.state}
+    if r.successful():
+        resp[&quot;result&quot;] = r.result
+    if r.failed():
+        resp[&quot;error&quot;] = str(r.result)
+    return resp
+</code></pre>
+
+
+</details>
+
+<p>Обновим <code>docker-compose.yaml</code>, добавив redis и celery_worker:</p>
+<details>
+<summary>Код `docker-compose.yaml`</summary>
+
+
+<pre><code class="language-yaml">services:
+  db:
+    image: postgres:15
+    container_name: booksharing_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: booksharing
+    healthcheck:
+      test: [ &quot;CMD-SHELL&quot;, &quot;pg_isready -U postgres&quot; ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - &quot;5432:5432&quot;
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  migrate:
+    build: .
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    command: sh -c &quot;alembic upgrade head&quot;
+
+  seed:
+    build: .
+    env_file:
+      - .env
+    depends_on:
+      - migrate
+    command: sh -c &quot;python seed_user.py&quot;
+
+  redis:
+    image: redis:7-alpine
+    container_name: booksharing_redis
+    ports:
+      - &quot;6379:6379&quot;
+
+  main_app:
+    build: .
+    container_name: booksharing_main
+    env_file:
+      - .env
+    ports:
+      - &quot;8000:8000&quot;
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    depends_on:
+      - seed
+
+  celery_worker:
+    build: .
+    container_name: booksharing_celery
+    env_file:
+      - .env
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+      - db
+      - migrate
+      - seed
+    command: celery -A celery_app.celery_app worker --loglevel=info
+
+volumes:
+  pgdata:
+</code></pre>
+
+
+</details>
+
+<p>Проверка результата:</p>
+<p>Отправка запроса на парсинг:</p>
+<p><img alt="Парсинг" src="../../images/postman3.png" /></p>
+<p>Проверка статуса задачи:</p>
+<p><img alt="Парсинг" src="../../images/postman4.png" /></p>
+<h3 id="_7">Выводы</h3>
+<p>В рамках данной подзадачи была реализована интеграция Celery для выполнения задач парсинга в фоне. Был создан новый
+endpoint в основном FastAPI приложении, который принимает запросы на парсинг, ставит задачи в очередь Celery и возвращает
+ID задачи клиенту. Также был добавлен endpoint для проверки статуса задачи и получения результатов после её выполнения.
+Это позволило обрабатывать долгие операции парсинга асинхронно, не блокируя основной поток приложения, и обеспечило
+масштабируемость при увеличении количества запросов на парсинг.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
